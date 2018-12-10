@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>amino</title>
+</head>
+<body>
+
+<div class="buttons">
+    <div id="id1" class="modal-btn">
+        id1
+    </div>
+    <div id="id2" class="modal-btn">
+        id2
+    </div>
+    <div id="id3" class="modal-btn">
+        id3
+    </div>
+</div>
+
+
+<script type="text/template" id="modal-template">
+    <div class="modal-layer" data-modal="close">
+        <div class="modal-content">
+            <p class="modal-text"><%=text%></p>
+            <div class="modal-footer">
+                <%if (mode == 'confirm') {%>
+                <div class="modal-btn modal-sure" data-modal="sure">
+                    确定
+                </div>
+                <div class="modal-btn modal-close" data-modal="close">
+                    取消
+                </div>
+                <% } %>
+                <%if (mode == 'alert') {%>
+                    <div class="modal-btn modal-close" data-modal="close">
+                    知道了
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</script>
+<script src="../dist/build.js"></script>
+</body>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    html, body, .modal-layer {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    .buttons{
+        padding: 50px;
+    }
+    .modal-layer {
+        background: rgba(0, 0, 0, 0.6);
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .modal-content {
+        width: 60%;
+        max-width: 400px;
+        background: #fff;
+        -webkit-border-radius: 50px;
+        -moz-border-radius: 50px;
+        min-height: 200px;
+        position: relative;
+        margin: 0 auto 50px;
+        border-radius: 2px;
+        box-shadow: 0 1px 3px rgba(0,0,0,.3);
+        box-sizing: border-box;
+    }
+
+    .modal-text {
+        text-align: center;
+        padding: 50px 0;
+    }
+
+    .modal-footer{
+        position: absolute;
+        bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .modal-btn{
+        box-sizing: border-box;
+        display: inline-block;
+        line-height: 1;
+        white-space: nowrap;
+        cursor: pointer;
+        background: #fff;
+        border: 1px solid #dcdfe6;
+        color: #606266;
+        -webkit-appearance: none;
+        text-align: center;
+        outline: none;
+        font-weight: 500;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        padding: 12px 20px;
+        font-size: 14px;
+        border-radius: 4px;
+        margin: 0 10px;
+    }
+    .modal-sure{
+        background: #F63;
+        color: #ffffff;
+    }
+</style>
+</html>
