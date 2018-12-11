@@ -50,26 +50,26 @@ function Modal(element, options) {
         this.$element.append(this._html);
         this.trigger(true)
     };
-    
-    this.on = function (action, modal, fn) {
-        let isCached = this.cached.filter((item) => {
-            return item.modal === modal
-        });
-        if (isCached && isCached.length) {
-            return;
-        }
-        this.cached.push({
-            modal: modal,
-            action: action,
-            fn: fn
-        });
-    };
     this.on('click', `[${this.actionProperty}="close"]`, this.proxy(this.hide, this));
     this.on('click', `[${this.actionProperty}="show"]`, this.proxy(this.show, this));
     if (this.mode === CONFIRM_TYPE) {
         this.on('click', `[${this.actionProperty}="sure"]`, this.proxy(this.success, this));
     }
 }
+
+Modal.prototype.on = function (action, modal, fn) {
+    let isCached = this.cached.filter((item) => {
+        return item.modal === modal
+    });
+    if (isCached && isCached.length) {
+        return;
+    }
+    this.cached.push({
+        modal: modal,
+        action: action,
+        fn: fn
+    });
+};
 
 Modal.prototype.show = function (e) {
     if (e) {
